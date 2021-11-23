@@ -13,7 +13,7 @@ You can use the HTTP API of CouchDB to acquire data from your IoT devices in you
 
 - Data By LRR (Base Station identifier) using time range
     
-    ```http(s)://{user}:{password}@{host}/{database}/_design/by_lrr/_view/by_eui_time?&descending=true&startkey=["{lrrid}","{end_time}"]&endkey=["{lrrid}","{start_time}"]```
+    ```http(s)://{user}:{password}@{host}/{database}/_design/by_lrr/_view/by_lrr_time?&descending=true&startkey=["{lrrid}","{end_time}"]&endkey=["{lrrid}","{start_time}"]```
 
 **All the values that represent time are in <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a> format.**
 
