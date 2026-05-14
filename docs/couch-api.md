@@ -1,8 +1,3 @@
----
-title: LoRaWAN Message Storage — HTTP API Reference
-description: Programmatic access to LoRaWAN uplink data stored in CouchDB
----
-
 # LoRaWAN Message Storage — HTTP API Reference
 
 This document describes the HTTP API used to access LoRaWAN uplink messages stored in CouchDB. Messages are collected from an on-premise Actility ThingPark Network Server and persisted as-is. The API is provided through four pre-built CouchDB views (design documents) and is intended for backend integrations, dashboards, and analytics.
