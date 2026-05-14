@@ -1,10 +1,6 @@
 # LoRaWAN Message Storage — HTTP API Reference
 
-This document describes the HTTP API used to access LoRaWAN uplink messages stored in CouchDB. Messages are collected from an on-premise Actility ThingPark Network Server and persisted as-is. The API is provided through four pre-built CouchDB views (design documents) and is intended for backend integrations, dashboards, and analytics.
-
-**Audience:** backend engineers integrating with the storage layer.
-**CouchDB version:** 3.2.1
-**Storage scale (reference):** ~115M documents, ~120 GB. Treat every query accordingly.
+This document describes the HTTP API used to access LoRaWAN uplink messages stored in CouchDB. Messages are collected from Actility ThingPark Network Server and persisted as-is. The API is provided through four pre-built CouchDB views (design documents) and is intended for backend integrations, dashboards, and analytics.
 
 ---
 
@@ -70,7 +66,7 @@ These apply to all four views. All values must be **JSON-encoded** and then URL-
 | `group`          | bool    | `false`  | Group reduce output by key.                                        |
 | `group_level`    | int     | —        | For composite keys, group at the Nth element.                      |
 
-> **Default freshness recommendation:** use `update=lazy` for dashboards and analytics, `update=true` only when you must see the absolute latest message. With ~115M documents and continuous writes, blocking on index refresh can stall the request for seconds.
+> **Default freshness recommendation:** use `update=lazy` for dashboards and analytics, `update=true` only when you must see the absolute latest message. With millions of documents and continuous writes, blocking on index refresh can stall the request for seconds.
 
 ### Pagination
 
@@ -163,7 +159,7 @@ GET /{database}/_design/by_eui/_view/by_eui_time
 ```
 
 **Caveats:**
-- `total_rows` is the total in the view index (~115M), **not** the result count.
+- `total_rows` is the total in the view index, **not** the result count.
 - Index 12 (`payload`) is often missing — always null-check.
 - A wide window (months) for a chatty device can still return tens of thousands of rows. Always paginate.
 
